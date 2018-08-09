@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_strsplit.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: quruiz <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
+/*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/05 18:21:13 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/05 18:21:13 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/08/09 02:20:55 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,7 +70,7 @@ char			**ft_strsplit(char const *str, char c)
 	if (str == NULL)
 		return (NULL);
 	nbr_wrd = ft_nbr_words((char *)str, c);
-	if (!(tab = (char **)malloc(sizeof(char *) * nbr_wrd + 1)))
+	if (!(tab = (char **)malloc(sizeof(char *) * (nbr_wrd + 1))))
 		return (NULL);
 	while (++j < nbr_wrd)
 	{
