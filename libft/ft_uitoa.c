@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_atoi.c                                        .::    .:/ .      .::   */
+/*   ft_uitoa.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/05 18:21:01 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/16 14:00:53 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/17 20:34:38 by quruiz       #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/26 13:18:50 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-intmax_t	ft_atoi(const char *str)
+char		*ft_uitoa(uintmax_t n)
 {
-	int			pos;
-	int			i;
-	intmax_t	nb;
+	char	*str;
+	int		len;
 
-	pos = 1;
-	i = 0;
-	nb = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	len = ft_uintlen(n);
+	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
+		return (NULL);
+	str[len] = '\0';
+	while (len--)
 	{
-		if (str[i] == '-')
-			pos = -1;
-		i++;
+		str[len] = (n % 10) + 48;
+		n = n / 10;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
-	}
-	return (nb * pos);
+	return (str);
 }

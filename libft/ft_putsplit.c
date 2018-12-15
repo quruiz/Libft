@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_atoi.c                                        .::    .:/ .      .::   */
+/*   ft_putsplit.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/05 18:21:01 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/16 14:00:53 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/08/29 13:44:51 by quruiz       #+#   ##    ##    #+#       */
+/*   Updated: 2018/09/06 16:56:17 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-intmax_t	ft_atoi(const char *str)
+void	ft_putsplit(char **split)
 {
-	int			pos;
-	int			i;
-	intmax_t	nb;
+	int		i;
 
-	pos = 1;
 	i = 0;
-	nb = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	while (split[i])
 	{
-		if (str[i] == '-')
-			pos = -1;
+		ft_putendl(split[i]);
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
-	}
-	return (nb * pos);
 }

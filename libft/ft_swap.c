@@ -3,21 +3,21 @@
 /*                                                              /             */
 /*   ft_swap.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: quruiz <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
+/*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/05 18:21:14 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/05 18:21:14 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/16 14:05:19 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-void	ft_swap(int *a, int *b)
+void	ft_swap(void *a, void *b)
 {
-	int c;
-	int d;
+	void *c;
+	void *d;
 
-	c = *a;
-	d = *b;
-	*b = c;
-	*a = d;
+	c = a;
+	d = b;
+	b = c;
+	a = d;
 }

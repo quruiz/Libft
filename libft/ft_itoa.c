@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/05 18:21:03 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 19:09:20 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/17 20:45:12 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,8 @@ char		*ft_itoa(intmax_t n)
 
 	neg = 0;
 	len = ft_intlen(n);
+	if (n == (-9223372036854775807) - 1)
+		return (ft_strdup("–9223372036854775808"));
 	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	str[len] = '\0';
@@ -29,8 +31,6 @@ char		*ft_itoa(intmax_t n)
 		neg = 1;
 		n = n * -1;
 	}
-	if (n == (-9223372036854775807) - 1)
-		return (ft_strdup("–9223372036854775808"));
 	while (len--)
 	{
 		str[len] = (n % 10) + 48;

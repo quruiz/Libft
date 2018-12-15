@@ -6,7 +6,7 @@
 #    By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/18 12:41:18 by quruiz       #+#   ##    ##    #+#        #
-#    Updated: 2018/05/09 11:01:16 by quruiz      ###    #+. /#+    ###.fr      #
+#    Updated: 2018/12/15 15:57:24 by quruiz      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -30,13 +30,12 @@ LIBFT_SRC = ft_atoi.c ft_bzero.c ft_conncat.c ft_intlen.c ft_isalnum.c \
 	ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c \
 	ft_strrchr.c ft_strrev.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c \
 	ft_strupcase.c ft_swap.c ft_tab_realloc.c ft_tolower.c ft_toupper.c \
-	ft_wcharlen.c ft_wstrdup.c ft_wstrlen.c
-PRINTF_SRC = ft_dispatch.c ft_parse.c ft_parser.c ft_printf.c ft_printf_c.c \
-	ft_printf_d.c ft_printf_d_justify.c ft_printf_o.c ft_printf_o_justify.c \
-	ft_printf_p.c ft_printf_s.c ft_printf_x.c ft_printf_x_justify.c ft_utils.c
+	ft_wcharlen.c ft_wstrdup.c ft_wstrlen.c ft_freesplit.c ft_putsplit.c \
+	ft_add_line_to_tab.c ft_free_line.c ft_atoui.c ft_check_limit.c ft_uitoa.c \
+	ft_uintlen.c ft_split_whitespaces.c ft_bswap_int32.c ft_bswap_int16.c
 GNL_SRC = get_next_line/get_next_line.c
-HEADER = libft/libft.h ft_printf/ft_printf.h get_next_line/get_next_line.h
-SRC = $(addprefix libft/, $(LIBFT_SRC)) $(addprefix ft_printf/, $(PRINTF_SRC)) $(GNL_SRC)
+HEADER = libft/libft.h get_next_line/get_next_line.h
+SRC = $(addprefix libft/, $(LIBFT_SRC)) $(GNL_SRC)
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

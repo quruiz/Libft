@@ -1,39 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_atoi.c                                        .::    .:/ .      .::   */
+/*   ft_bswap_int16.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/05 18:21:01 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/16 14:00:53 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/12/15 15:55:58 by quruiz       #+#   ##    ##    #+#       */
+/*   Updated: 2018/12/15 15:59:41 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-intmax_t	ft_atoi(const char *str)
+short	ft_bswap_int16(short val) 
 {
-	int			pos;
-	int			i;
-	intmax_t	nb;
-
-	pos = 1;
-	i = 0;
-	nb = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			pos = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
-	}
-	return (nb * pos);
+	return (val << 8) | ((val >> 8) & 0xFF);
 }

@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/05 18:21:33 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/04 02:14:56 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/12/15 15:59:51 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,7 +48,7 @@ int				ft_isascii(int c);
 int				ft_isalpha(int c);
 int				ft_isalnum(int c);
 void			ft_bzero(void *s, size_t n);
-int				ft_atoi(const char *str);
+intmax_t		ft_atoi(const char *str);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
 void			*ft_memalloc(size_t size);
 void			ft_memdel(void **ap);
@@ -81,14 +81,14 @@ void			*ft_memchr(const void *s, int c, size_t n);
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void			ft_lstadd(t_list **alst, t_list *new);
+void			ft_lstadd(t_list **alst, t_list *n);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int				ft_sqrt(int nb);
 int				ft_recursive_power(int nb, int power);
 int				ft_recursive_factorial(int nb);
-void			ft_swap(int *a, int *b);
+void			ft_swap(void *a, void *b);
 int				ft_intlen(intmax_t nb);
 char			*ft_str_realloc(char *str, size_t size);
 int				ft_isupper(int c);
@@ -116,4 +116,15 @@ char			*ft_conncat(char *res, const char *src, size_t l1, size_t l2);
 size_t			ft_wstrlen(wchar_t const *str);
 wchar_t			*ft_wstrdup(wchar_t *str);
 int				*ft_tab_realloc(int *tab, int o, int n);
+int				ft_freesplit(char **split);
+void			ft_putsplit(char **split);
+char			**ft_add_line_to_tab(char **tab, char *line, int size);
+int				ft_free_line(char **line, int val);
+uintmax_t		ft_atoui(const char *str);
+int				ft_check_limit(char *nb, char *limit);
+int				ft_uintlen(uintmax_t nb);
+char			*ft_uitoa(uintmax_t n);
+char			**ft_split_whitespaces(char const *str);
+short			ft_bswap_int16(short val);
+int				ft_bswap_int32(int val);
 #endif

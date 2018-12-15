@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_atoi.c                                        .::    .:/ .      .::   */
+/*   ft_add_line_to_tab.c                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/05 18:21:01 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/16 14:00:53 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/09/05 14:14:29 by quruiz       #+#   ##    ##    #+#       */
+/*   Updated: 2018/09/05 16:00:01 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-intmax_t	ft_atoi(const char *str)
+char	**ft_add_line_to_tab(char **tab, char *line, int size)
 {
-	int			pos;
-	int			i;
-	intmax_t	nb;
+	char	**tmp;
+	int		i;
 
-	pos = 1;
 	i = 0;
-	nb = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	if (!(tmp = ft_memalloc(sizeof(char *) * (size + 2))))
+		return (0);
+	while (i < size)
 	{
-		if (str[i] == '-')
-			pos = -1;
+		tmp[i] = tab[i];
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
-	}
-	return (nb * pos);
+	tmp[i] = line;
+	tmp[i + 1] = NULL;
+	if (size > 0)
+		free(tab);
+	return (tmp);
 }

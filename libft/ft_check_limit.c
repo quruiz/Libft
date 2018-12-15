@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_atoi.c                                        .::    .:/ .      .::   */
+/*   ft_check_limit.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/05 18:21:01 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/16 14:00:53 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/17 00:08:17 by quruiz       #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/26 13:19:04 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-intmax_t	ft_atoi(const char *str)
+int		ft_check_limit(char *nb, char *limit)
 {
-	int			pos;
-	int			i;
-	intmax_t	nb;
+	int		len_nb;
+	int		len_limit;
+	int		i;
 
-	pos = 1;
+	len_nb = ft_strlen(nb);
+	len_limit = ft_strlen(limit);
 	i = 0;
-	nb = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	if (!ft_str_is_numeric(nb))
+		return (0);
+	if (len_nb < len_limit)
+		return (1);
+	else if (len_nb == len_limit)
 	{
-		if (str[i] == '-')
-			pos = -1;
-		i++;
+		while (i < len_nb)
+		{
+			if ((nb[i] - 48) == (limit[i] - 48))
+				i++;
+			else
+				return (((nb[i] - 48) < (limit[i] - 48)) ? 1 : 0);
+		}
+		return (1);
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
-	}
-	return (nb * pos);
+	return (0);
 }

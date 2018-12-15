@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strsplit.c                                    .::    .:/ .      .::   */
+/*   ft_split_whitespaces.c                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/05 18:21:13 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/10 17:42:52 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/26 15:12:58 by quruiz       #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/26 15:17:58 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_nbr_words(char *str, char c)
+static int		ft_nbr_words(char *str)
 {
 	int		nbr_wrd;
 	int		i;
@@ -24,24 +24,24 @@ static int		ft_nbr_words(char *str, char c)
 		return (0);
 	while (str[i] != '\0')
 	{
-		while (str[i] == c)
+		while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
 			i++;
 		if (str[i] >= 33 && str[i] <= 126)
 			nbr_wrd++;
-		while (str[i] != c && str[i])
+		while (!(str[i] == ' ' || str[i] == '\n' || str[i] == '\t') && str[i])
 			i++;
 	}
 	return (nbr_wrd);
 }
 
-static int		ft_nbr_ltr(char *str, char c)
+static int		ft_nbr_ltr(char *str)
 {
-	int		nb;
+	int		i;
 
-	nb = 0;
-	while (str[nb] != c && str[nb])
-		nb++;
-	return (nb);
+	i = 0;
+	while (!(str[i] == ' ' || str[i] == '\n' || str[i] == '\t') && str[i])
+		i++;
+	return (i);
 }
 
 static void		ft_cpy(char *src, char *dest, int lenght)
@@ -57,7 +57,7 @@ static void		ft_cpy(char *src, char *dest, int lenght)
 	dest[i] = '\0';
 }
 
-char			**ft_strsplit(char const *str, char c)
+char			**ft_split_whitespaces(char const *str)
 {
 	int		nbr_wrd;
 	char	**tab;
@@ -69,14 +69,14 @@ char			**ft_strsplit(char const *str, char c)
 	j = -1;
 	if (str == NULL)
 		return (NULL);
-	nbr_wrd = ft_nbr_words((char *)str, c);
+	nbr_wrd = ft_nbr_words((char *)str);
 	if (!(tab = (char **)malloc(sizeof(char *) * (nbr_wrd + 1))))
 		return (NULL);
 	while (++j < nbr_wrd)
 	{
-		while (str[i] == c)
+		while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
 			i++;
-		ltr = ft_nbr_ltr((char *)str + i, c);
+		ltr = ft_nbr_ltr((char *)str + i);
 		if (!(tab[j] = (char *)malloc(sizeof(char) * (ltr + 1))))
 			return (NULL);
 		ft_cpy((char *)str + i, tab[j], ltr);
