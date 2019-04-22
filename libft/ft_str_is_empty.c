@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bswap_int16.c                                 .::    .:/ .      .::   */
+/*   ft_str_is_empty.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/12/15 15:55:58 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/27 18:04:23 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Created: 2019/01/16 18:20:28 by quruiz       #+#   ##    ##    #+#       */
+/*   Updated: 2019/03/16 19:03:22 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-short	ft_bswap_int16(short val)
+int		ft_str_is_empty(char *str)
 {
-	return (val << 8) | ((val >> 8) & 0xFF);
+	int		i;
+	int		res;
+
+	i = 0;
+	res = 0;
+	if (!str)
+		return (1);
+	if (!ft_strlen(str))
+		return (1);
+	while (str[i])
+	{
+		res += ft_isprint(str[i]);
+		i++;
+	}
+	if (!res)
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/05 18:21:33 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2018/12/15 15:59:51 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/27 14:00:24 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,10 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 # include <wchar.h>
+# include "../get_next_line/get_next_line.h"
+# include "../ft_printf/ft_printf.h"
 
 typedef struct	s_list
 {
@@ -93,6 +96,7 @@ int				ft_intlen(intmax_t nb);
 char			*ft_str_realloc(char *str, size_t size);
 int				ft_isupper(int c);
 int				ft_islower(int c);
+int				ft_isnotprint(int c);
 int				ft_str_is_alpha(char *str);
 int				ft_str_is_lowercase(char *str);
 int				ft_str_is_uppercase(char *str);
@@ -127,4 +131,6 @@ char			*ft_uitoa(uintmax_t n);
 char			**ft_split_whitespaces(char const *str);
 short			ft_bswap_int16(short val);
 int				ft_bswap_int32(int val);
+int				ft_str_is_empty(char *str);
+char			**ft_strsplit_trim(char const *s, char c);
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strsplit.c                                    .::    .:/ .      .::   */
+/*   ft_strsplit_trim.c                               .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: quruiz <quruiz@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/05 18:21:13 by quruiz       #+#   ##    ##    #+#       */
-/*   Updated: 2019/02/07 18:52:33 by quruiz      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/03/16 19:01:46 by quruiz      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,7 +32,22 @@ static int	count_words(char const *s, char c)
 	return (nb_words);
 }
 
-char		**ft_strsplit(char const *s, char c)
+static void	clean_split(char **split)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	while (split[i])
+	{
+		tmp = split[i];
+		split[i] = ft_strtrim(split[i]);
+		free(tmp);
+		i++;
+	}
+}
+
+char		**ft_strsplit_trim(char const *s, char c)
 {
 	char	**split;
 	char	*tmp;
@@ -56,5 +71,6 @@ char		**ft_strsplit(char const *s, char c)
 			cursor++;
 		i++;
 	}
+	clean_split(split);
 	return (split);
 }
